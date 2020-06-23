@@ -6,7 +6,8 @@ import dagger.Component
 import io.github.mattpvaughn.uigradients.application.CustomApplication
 import io.github.mattpvaughn.uigradients.data.local.*
 import io.github.mattpvaughn.uigradients.data.remote.UIGradientsApiService
-import io.github.mattpvaughn.uigradients.features.library.LibraryViewModelFactory
+import io.github.mattpvaughn.uigradients.features.details.DetailsViewModel
+import io.github.mattpvaughn.uigradients.features.library.LibraryViewModel
 import io.github.mattpvaughn.uigradients.injection.modules.AppModule
 import java.io.File
 import javax.inject.Singleton
@@ -18,10 +19,10 @@ interface AppComponent {
     fun internalFilesDir(): File
     fun externalDeviceDirs(): List<File>
     fun sharedPrefs(): SharedPreferences
-    fun prefsRepo(): PrefsRepo
     fun gradientRepo(): GradientRepository
     fun remoteService(): UIGradientsApiService
-    fun libraryViewModelFactory(): LibraryViewModelFactory
+    fun detailsViewModelFactory(): DetailsViewModel.Factory
+    fun libraryViewModelFactory(): LibraryViewModel.Factory
 
     // Inject
     fun inject(customApplication: CustomApplication)

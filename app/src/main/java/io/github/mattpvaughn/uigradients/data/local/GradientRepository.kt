@@ -1,11 +1,6 @@
 package io.github.mattpvaughn.uigradients.data.local
 
-import android.text.format.DateFormat
-import android.text.format.DateUtils
-import android.util.Log
 import androidx.lifecycle.LiveData
-import io.github.mattpvaughn.uigradients.application.APP_NAME
-import io.github.mattpvaughn.uigradients.application.SECONDS_PER_MINUTE
 import io.github.mattpvaughn.uigradients.data.local.PrefsRepo.Companion.REFRESH_FREQUENCY_MINUTES
 import io.github.mattpvaughn.uigradients.data.local.model.Gradient
 import io.github.mattpvaughn.uigradients.data.remote.UIGradientsApiService
@@ -14,6 +9,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/** Repository layer abstracting network/local fetching of gradient data */
 @Singleton
 class GradientRepository @Inject constructor(
     private val prefsRepo: PrefsRepo,
@@ -21,24 +17,20 @@ class GradientRepository @Inject constructor(
     private val uiGradientsApiService: UIGradientsApiService
 ) {
 
+    /**
+     * Updates the gradient data in the repo if [REFRESH_FREQUENCY_MINUTES] have passed since the
+     * last successful refresh, b/c the source is not updated often
+     */
     suspend fun updateData() {
         val currentEpoch = System.currentTimeMillis()
-        val sdf = java.text.SimpleDateFormat("HH:mm:ss")
-        val currDate = java.util.Date(currentEpoch)
-        val lastDate = java.util.Date(prefsRepo.lastRefreshedDataEpoch)
-        val curr = sdf.format(currDate)
-        val last = sdf.format(lastDate)
-        Log.i(APP_NAME, "Current = $curr, last = $last")
-        /**
-         * We only want to refresh the data every [REFRESH_FREQUENCY_MINUTES] minutes, because
-         * we do not expect the source data to be updated frequently
-         */
         if (currentEpoch - prefsRepo.lastRefreshedDataEpoch > REFRESH_FREQUENCY_MINUTES * 60 * 1000) {
-            Log.i(APP_NAME, "UPDATED")
-            prefsRepo.lastRefreshedDataEpoch = currentEpoch
             withContext(Dispatchers.IO) {
                 val gradients = uiGradientsApiService.fetchGradientsList()
-                insertAll(gradients)
+                // clear gradients in case there are gradients which have been removed from the
+                // network list
+                gradientDao.clear()
+                gradientDao.insertAll(gradients)
+                prefsRepo.lastRefreshedDataEpoch = currentEpoch
             }
         }
     }
@@ -46,9 +38,4 @@ class GradientRepository @Inject constructor(
     fun getAllModels(): LiveData<List<Gradient>> {
         return gradientDao.getAllRows()
     }
-
-    fun insertAll(gradients: List<Gradient>) {
-        return gradientDao.insertAll(gradients)
-    }
-
 }

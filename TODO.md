@@ -1,5 +1,8 @@
 # Potential UI gradient app features:
 
- - [ ] Pull from the Json file every time
+ - Tests
+ - Improve UI for horizontal screens/tablets
+ - Allow user to filter by color
+ - Allow user to save favorites?
 
 

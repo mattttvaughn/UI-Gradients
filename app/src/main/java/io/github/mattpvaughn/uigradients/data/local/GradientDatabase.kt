@@ -34,6 +34,12 @@ interface GradientDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(rows: List<Gradient>)
+
+    @Query("DELETE FROM Gradient WHERE :name = name")
+    fun delete(name: String)
+
+    @Query("DELETE FROM Gradient")
+    fun clear()
 }
 
 

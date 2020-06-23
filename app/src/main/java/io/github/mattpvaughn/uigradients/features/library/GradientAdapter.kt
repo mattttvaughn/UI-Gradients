@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import io.github.mattpvaughn.uigradients.data.local.model.Gradient
 import io.github.mattpvaughn.uigradients.databinding.GradientListItemBinding
 
-
+/** [RecyclerView.Adapter] mapping a list of [Gradient] to views */
 class GradientAdapter(private val modelClick: LibraryFragment.ModelClick) :
     ListAdapter<Gradient, RecyclerView.ViewHolder>(GradientDiffCallback()) {
 
@@ -28,7 +28,7 @@ class GradientAdapter(private val modelClick: LibraryFragment.ModelClick) :
 
         fun bind(gradient: Gradient, modelClick: LibraryFragment.ModelClick) {
             gradientItemBinding.bind(gradient)
-            gradientItemBinding.root.setOnClickListener { modelClick.onClick(gradient) }
+            gradientItemBinding.thumb.setOnClickListener { modelClick.onClick(gradient) }
         }
 
         companion object {
@@ -44,9 +44,10 @@ class GradientAdapter(private val modelClick: LibraryFragment.ModelClick) :
 
 class GradientDiffCallback : DiffUtil.ItemCallback<Gradient>() {
     override fun areItemsTheSame(oldItem: Gradient, newItem: Gradient): Boolean {
-        return oldItem === newItem
+        return oldItem.name === newItem.name
     }
 
+    // Forces redraw of an item if returns false
     override fun areContentsTheSame(oldItem: Gradient, newItem: Gradient): Boolean {
         return oldItem == newItem
     }

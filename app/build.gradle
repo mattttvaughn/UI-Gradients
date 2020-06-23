@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "io.github.mattpvaughn.uigradients"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 5
         versionName "0.23"
@@ -24,8 +24,8 @@ android {
             debuggable true
         }
     }
-    viewBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -61,19 +61,19 @@ dependencies {
 
     // Material components
     implementation "com.google.android.material:material:$materialLibVersion"
-    implementation "androidx.appcompat:appcompat:$supportlibVersion"
-    implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
 
     // AndroidX
+    implementation "androidx.appcompat:appcompat:$supportlibVersion"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta7'
     implementation "androidx.annotation:annotation:$androidxAnnotationVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation 'com.squareup.retrofit2:converter-moshi:2.8.1'
-    implementation "com.squareup.moshi:moshi-kotlin:1.9.2"
-    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.9.2'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.9.3'
 
     // Kotlin coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
@@ -92,22 +92,9 @@ dependencies {
     implementation "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
-    // Glide
-//    implementation "com.github.bumptech.glide:glide:$glideVersion"
-//    kapt "com.github.bumptech.glide:compiler:$glideVersion"
-
-    // LocalBroadcastManager
-//    implementation "androidx.localbroadcastmanager:localbroadcastmanager:$localBroadcastManagerVersion"
-//
-    // WorkManager helps coordinate background syncing of local data w.r.t. network conditions
-//    implementation "androidx.work:work-runtime-ktx:$workVersion"
-
     // Android team's license displaying library- creates an activity showing all dependencies
     // by pulling from maven
     implementation "com.google.android.gms:play-services-oss-licenses:$ossLicenseActivityVersion"
-
-    // Paging library
-//    implementation 'android.arch.paging:runtime:1.0.1'
 
     /* ~~~~~~~~~~~~ Local Tests ~~~~~~~~~~ */
     testImplementation "junit:junit:$junitVersion"

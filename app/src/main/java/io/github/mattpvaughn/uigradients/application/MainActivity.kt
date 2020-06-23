@@ -1,7 +1,6 @@
 package io.github.mattpvaughn.uigradients.application
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -23,7 +22,7 @@ open class MainActivity : AppCompatActivity() {
     }
 
     @Inject
-    lateinit var mainActivityViewModelFactory: MainActivityViewModelFactory
+    lateinit var mainActivityViewModelFactory: MainActivityViewModel.Factory
 
     @Inject
     lateinit var navigator: Navigator
@@ -31,7 +30,6 @@ open class MainActivity : AppCompatActivity() {
     lateinit var activityComponent: ActivityComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.i(APP_NAME, "MainActivity onCreate()")
         activityComponent = DaggerActivityComponent.builder()
             .appComponent((application as CustomApplication).appComponent)
             .activityModule(ActivityModule(this))
@@ -51,26 +49,5 @@ open class MainActivity : AppCompatActivity() {
         viewModel.errorMessage.observeEvent(this) { errorMessage ->
             Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
         }
-    }
-
-
-    override fun onPause() {
-        Log.i(APP_NAME, "MainActivity onPause()")
-        super.onPause()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.i(APP_NAME, "MainActivity onResume()")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.i(APP_NAME, "MainActivity onStart()")
-    }
-
-    override fun onStop() {
-        Log.i(APP_NAME, "MainActivity onStop()")
-        super.onStop()
     }
 }

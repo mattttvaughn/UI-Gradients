@@ -7,8 +7,12 @@ import androidx.room.TypeConverter
 import com.squareup.moshi.JsonClass
 import kotlinx.android.parcel.Parcelize
 
-// In a real life scenario, break up the network and local models so they aren't coupled with
-// each other
+/**
+ * Models a gradient as a list of colors and additional info
+ *
+ * In a real life scenario, we'd break up the network and local models so they aren't coupled with
+ * each other, but they're identical for this basic use-case
+ */
 @JsonClass(generateAdapter = true)
 @Parcelize
 @Entity

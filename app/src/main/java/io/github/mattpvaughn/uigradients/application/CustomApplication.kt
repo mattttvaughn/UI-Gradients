@@ -17,17 +17,6 @@ open class CustomApplication : Application() {
         initializeComponent()
     }
 
-    init {
-        INSTANCE = this
-    }
-
-    companion object {
-        private var INSTANCE: CustomApplication? = null
-
-        @JvmStatic
-        fun get(): CustomApplication = INSTANCE!!
-    }
-
     override fun onCreate() {
         if (STRICT_MODE && BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(

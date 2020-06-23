@@ -1,14 +1,23 @@
-# Daily app day #8: UI gradients app
+# Gradient app
 
-A barebones client for [UIGradients](https://uigradients.com). Displays a list of all available
-gradients and allows the user to view/copy their colors to the clipboard.
+A little demo project I made, originally part of my "app a day" experiment. A client for
+[UIGradients](https://uigradients.com). Displays a list of all available gradients and allows the
+user to view/copy colors to the clipboard.
 
-![Demo](./demo/demo.gif)
+### Tech stack
+ - Dagger2
+ - Retrofit + OkHttp + Moshi
+ - Room (for request caching)
+ - Kotlin + Coroutines
+ - Jetpack ViewModel + Lifecycle
+ - CoordinatorLayout
 
-What I learned:
+## Demos
 
- - Handling gradients with an arbitrary number of colors
- - Fragment transition basics
+![Demo gif](./demo/demo.gif)
 
+![Home](./demo/screenshot_home.png)
+
+![Details](./demo/screenshot_details.png)
 
 
