@@ -17,7 +17,9 @@ import io.github.mattpvaughn.uigradients.view.getMedianColor
 import io.github.mattpvaughn.uigradients.view.toGradientDrawable
 
 /**
- * Binds data from [gradient] to the layout [FragmentDetailsBinding]
+ * Binds data from [gradient] to the layout [FragmentDetailsBinding].
+ *
+ * Note: the logic for copying here maybe ought to be in the ViewModel
  */
 fun FragmentDetailsBinding.bind(gradient: Gradient) {
     val clipboard: ClipboardManager =

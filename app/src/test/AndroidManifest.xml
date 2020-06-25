@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.github.mattpvaughn.uigradients">
+
+    <!-- Prevent mockK from failing during tests on android 10+ -->
+    <application android:extractNativeLibs="true" />
+</manifest>

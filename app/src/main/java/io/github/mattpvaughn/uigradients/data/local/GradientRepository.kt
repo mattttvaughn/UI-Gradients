@@ -9,19 +9,24 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
+interface IGradientRepo {
+    suspend fun updateData()
+    fun getAllModels(): LiveData<List<Gradient>>
+}
+
 /** Repository layer abstracting network/local fetching of gradient data */
 @Singleton
 class GradientRepository @Inject constructor(
     private val prefsRepo: PrefsRepo,
     private val gradientDao: GradientDao,
     private val uiGradientsApiService: UIGradientsApiService
-) {
+) : IGradientRepo {
 
     /**
      * Updates the gradient data in the repo if [REFRESH_FREQUENCY_MINUTES] have passed since the
      * last successful refresh, b/c the source is not updated often
      */
-    suspend fun updateData() {
+    override suspend fun updateData() {
         val currentEpoch = System.currentTimeMillis()
         if (currentEpoch - prefsRepo.lastRefreshedDataEpoch > REFRESH_FREQUENCY_MINUTES * 60 * 1000) {
             withContext(Dispatchers.IO) {
@@ -35,7 +40,7 @@ class GradientRepository @Inject constructor(
         }
     }
 
-    fun getAllModels(): LiveData<List<Gradient>> {
+    override fun getAllModels(): LiveData<List<Gradient>> {
         return gradientDao.getAllRows()
     }
 }

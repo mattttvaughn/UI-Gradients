@@ -88,10 +88,12 @@ class LibraryFragment : Fragment() {
         })
 
         binding.loadingFailedIcon.setOnClickListener {
-            viewModel.reload()
+            viewModel.load()
         }
 
         (activity as MainActivity).setSupportActionBar(binding.toolbar)
+
+        viewModel.load()
 
         return binding.root
     }

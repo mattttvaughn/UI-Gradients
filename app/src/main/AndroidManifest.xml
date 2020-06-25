@@ -4,7 +4,6 @@
     package="io.github.mattpvaughn.uigradients">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name="io.github.mattpvaughn.uigradients.application.CustomApplication"

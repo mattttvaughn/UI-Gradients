@@ -2,6 +2,7 @@ package io.github.mattpvaughn.uigradients.features.library
 
 import androidx.lifecycle.*
 import io.github.mattpvaughn.uigradients.data.local.GradientRepository
+import io.github.mattpvaughn.uigradients.data.local.IGradientRepo
 import io.github.mattpvaughn.uigradients.data.local.model.Gradient
 import io.github.mattpvaughn.uigradients.util.CombinedLiveData
 import io.github.mattpvaughn.uigradients.util.Event
@@ -13,8 +14,9 @@ import javax.inject.Inject
 
 
 /** ViewModel representing the list of all gradients */
-class LibraryViewModel(private val repository: GradientRepository) : ViewModel() {
+class LibraryViewModel(private val repository: IGradientRepo) : ViewModel() {
 
+    @Suppress("UNCHECKED_CAST")
     class Factory @Inject constructor(private val gradientRepository: GradientRepository) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -36,32 +38,30 @@ class LibraryViewModel(private val repository: GradientRepository) : ViewModel()
     val errorMessage: LiveData<Event<String>>
         get() = _errorMessage
 
-    private var loadingState = MutableLiveData<LoadingStatus>(DONE)
+    private var loadingState = MutableLiveData<LoadingStatus>(INITIALIZED)
 
     /** The potential states which the view is restricted to */
     sealed class ViewState {
         object Loading: ViewState()
         object NoItemsFound: ViewState()
-        class GradientList(val gradients: List<Gradient>) : ViewState()
+        data class GradientList(val gradients: List<Gradient>) : ViewState()
         object Error: ViewState()
     }
 
     val viewState: CombinedLiveData<List<Gradient>, LoadingStatus, ViewState> =
-        CombinedLiveData(gradients, loadingState) { isGradientsListEmpty, networkLoadingState ->
-            return@CombinedLiveData when {
-                isGradientsListEmpty?.isNotEmpty() == true -> ViewState.GradientList(gradients.value!!)
-                networkLoadingState == LOADING -> ViewState.Loading
-                networkLoadingState == ERROR -> ViewState.Error
-                networkLoadingState == DONE -> ViewState.NoItemsFound
-                else -> throw NoWhenBranchMatchedException("Impossible ViewState")
+        CombinedLiveData(gradients, loadingState) { gradientsList, networkState ->
+            if (!gradientsList.isNullOrEmpty()) {
+                return@CombinedLiveData ViewState.GradientList(gradientsList)
+            }
+            return@CombinedLiveData when (networkState) {
+                LOADING -> ViewState.Loading
+                DONE -> ViewState.NoItemsFound
+                INITIALIZED, null -> ViewState.NoItemsFound
+                ERROR -> ViewState.Error
             }
         }
 
-    init {
-        reload()
-    }
-
-    fun reload() {
+    fun load() {
         viewModelScope.launch {
             try {
                 loadingState.postValue(LOADING)
@@ -75,6 +75,4 @@ class LibraryViewModel(private val repository: GradientRepository) : ViewModel()
             }
         }
     }
-
-
 }
