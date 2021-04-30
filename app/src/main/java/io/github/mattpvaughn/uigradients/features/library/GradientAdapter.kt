@@ -8,7 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import io.github.mattpvaughn.uigradients.data.local.model.Gradient
 import io.github.mattpvaughn.uigradients.databinding.GradientListItemBinding
 
-/** [RecyclerView.Adapter] mapping a list of [Gradient] to views */
+/**
+ * [RecyclerView.Adapter] mapping a list of [Gradient] to views
+ *
+ * Note: A base adapter following the pattern below ought to be used to cut down on
+ * boilerplate if any other adapters are written
+ */
 class GradientAdapter(private val modelClick: LibraryFragment.ModelClick) :
     ListAdapter<Gradient, RecyclerView.ViewHolder>(GradientDiffCallback()) {
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:xlink="http://www.w3.org/1999/xlink" height="500" id="svg8" version="1.1"
+    viewBox="0 0 270.93333 132.29167" width="1024" xmlns="http://www.w3.org/2000/svg"
+    inkscape:version="1.0 (6e3e5246a0, 2020-05-07)" sodipodi:docname="feature_graphic.svg">
+  <defs id="defs2">
+    <linearGradient id="linearGradient853" inkscape:collect="always">
+      <stop style="stop-color:#ee4f6b;stop-opacity:1" id="stop849" offset="0" />
+      <stop style="stop-color:#ffe8b9;stop-opacity:1" id="stop851" offset="1" />
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" id="linearGradient855" x1="7.1207683e-06"
+        x2="270.93332" y1="-2.5431316e-06" y2="132.29167" inkscape:collect="always"
+        xlink:href="#linearGradient853" />
+  </defs>
+  <sodipodi:namedview bordercolor="#666666" borderopacity="1.0" id="base" pagecolor="#ffffff"
+      showgrid="false" units="px" inkscape:current-layer="layer1" inkscape:cx="172.88206"
+      inkscape:cy="555.30039" inkscape:document-rotation="0" inkscape:document-units="mm"
+      inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:window-height="879"
+      inkscape:window-maximized="1" inkscape:window-width="1600" inkscape:window-x="0"
+      inkscape:window-y="0" inkscape:zoom="0.43967972" />
+  <metadata id="metadata5">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g id="layer1" inkscape:groupmode="layer" inkscape:label="Layer 1">
+    <rect
+        style="fill:url(#linearGradient855);stroke-width:0.264583;stop-color:#000000;fill-opacity:1"
+        height="132.29167" id="rect833" width="270.93332" x="7.1207683e-06" y="-2.5431316e-06" />
+    <g id="g869" transform="translate(9.8677317e-5,-2.3439817)">
+      <text
+          style="font-style:normal;font-weight:normal;font-size:12.4217px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.310545"
+          id="text859" x="105.70272" y="66.329689" xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans Light';fill:#ffffff;fill-opacity:1;stroke-width:0.310545"
+           id="tspan857"
+           x="105.70272"
+           y="66.329689"
+           sodipodi:role="line">Gradientor</tspan></text>
+      <text
+          style="font-style:normal;font-weight:normal;font-size:6.39322px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.731609;stroke:none;stroke-width:0.159831"
+          id="text863" x="108.1461" y="78.680084" xml:space="preserve"><tspan
+           style="font-style:italic;font-variant:normal;font-weight:300;font-stretch:normal;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans Light Italic';fill:#ffffff;fill-opacity:0.731609;stroke-width:0.159831"
+           id="tspan861"
+           x="108.1461"
+           y="78.680084"
+           sodipodi:role="line">Beautiful gradients</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -17,7 +17,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
         debug {
@@ -35,6 +35,7 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
     // Shared code b/w test and androidTest: mocks 'n' stuff
     sourceSets {
         final String SHARED_TEST_DIR = "src/testShared/java"
@@ -52,6 +53,10 @@ android {
             arg("room.expandProjection", "true")
         }
     }
+    testOptions {
+        animationsDisabled = true
+    }
+
 }
 
 dependencies {
@@ -107,6 +112,8 @@ dependencies {
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
     testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
     testImplementation "io.mockk:mockk:$mockKVersion"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttpVersion"
+
 
     /* ~~~~~~~~~~~~ Instrumented tests ~~~~~~~~~~ */
     androidTestImplementation "junit:junit:$junitVersion"

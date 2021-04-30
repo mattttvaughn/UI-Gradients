@@ -14,6 +14,10 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * A more complete app will test [LibraryViewModel.viewState]s against
+ * the activity shown, but I leave that as an exercise for the reader.
+ */
 @RunWith(AndroidJUnit4::class)
 class LibraryFragmentTest {
 

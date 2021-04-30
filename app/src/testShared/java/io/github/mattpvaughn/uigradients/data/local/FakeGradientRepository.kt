@@ -9,7 +9,7 @@ class FakeGradientRepository(private val throwsError: Boolean) : IGradientRepo {
     var fakeGradientsLiveData = MutableLiveData(emptyList<Gradient>())
 
     private fun generateFakeGradient(): Gradient {
-        return Gradient(name = "Tall horse", colors = listOf("#FFFFFF", "#000000"))
+        return Gradient(name = "Some gradient", colors = listOf("#FFFFFF", "#000000"))
     }
 
     override suspend fun updateData() {

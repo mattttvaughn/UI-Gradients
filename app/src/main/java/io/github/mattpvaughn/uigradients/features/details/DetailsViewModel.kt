@@ -9,7 +9,7 @@ import io.github.mattpvaughn.uigradients.util.Event
 import io.github.mattpvaughn.uigradients.util.postEvent
 import javax.inject.Inject
 
-/** Contains the state for the view containing additional information for a gradient */
+/** Contains the state for the view containing detailed information for a gradient */
 class DetailsViewModel(gradient: Gradient) : ViewModel() {
 
     class Factory @Inject constructor() : ViewModelProvider.Factory {
@@ -18,7 +18,7 @@ class DetailsViewModel(gradient: Gradient) : ViewModel() {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             check (this::gradient.isInitialized) { "Runtime parameter [gradient] missing" }
             return if (modelClass.isAssignableFrom(DetailsViewModel::class.java)) {
-                DetailsViewModel(gradient) as T
+                @Suppress("UNCHECKED_CAST") DetailsViewModel(gradient) as T
             } else {
                 throw IllegalArgumentException("ViewModel Not Found")
             }

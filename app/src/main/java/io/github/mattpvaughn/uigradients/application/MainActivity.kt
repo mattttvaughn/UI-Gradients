@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 
 @ActivityScope
-open class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainActivityViewModel by lazy {
         ViewModelProvider(this, mainActivityViewModelFactory).get(MainActivityViewModel::class.java)

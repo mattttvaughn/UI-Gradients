@@ -10,21 +10,22 @@ import org.junit.Test
 
 class DetailsViewModelTest {
 
-    private lateinit var viewModel: DetailsViewModel
-    private val fakeGradient: Gradient = Gradient("Leaning doctor", listOf("#FFF", "#000"))
-
     @get:Rule
-    var instantTaskExecutorRule = InstantTaskExecutorRule()
+    val instantExecutorRule = InstantTaskExecutorRule()
+
+    private lateinit var viewModel: DetailsViewModel
+
+    private val exampleGradient = Gradient(
+        name = "Omolon", colors = listOf("#FFFFFA", "#00000A")
+    )
 
     @Before
     fun setUp() {
-        viewModel = DetailsViewModel(
-            fakeGradient
-        )
+        viewModel = DetailsViewModel(exampleGradient)
     }
 
     @Test
-    fun getGradientLiveData() {
-        assertEquals(viewModel.gradientLiveData.getOrAwaitValue(), fakeGradient)
+    fun `test livedata exposes correct gradient`() {
+        assertEquals(viewModel.gradientLiveData.getOrAwaitValue(), exampleGradient)
     }
 }

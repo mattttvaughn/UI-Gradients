@@ -6,8 +6,12 @@ import retrofit2.http.GET
 
 const val BASE_URL = "https://raw.githubusercontent.com/ghosh/uiGradients/master/"
 
-/** Mega-overkill for fetching a single file ofc but scalable */
-interface UIGradientsApiService {
+/**
+ * Provides access to the UI Gradients endpoint
+ *
+ * Note: Overkill for fetching a single file but scalable
+ */
+interface UIGradientsApi {
     @GET("gradients.json")
     suspend fun fetchGradientsList(): List<Gradient>
 }

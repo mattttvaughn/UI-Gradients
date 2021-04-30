@@ -42,7 +42,7 @@ class LibraryFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val binding = FragmentLibraryBinding.inflate(inflater, container, false)
         binding.libraryList.adapter = adapter

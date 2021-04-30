@@ -15,11 +15,12 @@ import io.github.mattpvaughn.uigradients.util.pickForegroundColor
 import io.github.mattpvaughn.uigradients.util.toColorInt
 import io.github.mattpvaughn.uigradients.view.getMedianColor
 import io.github.mattpvaughn.uigradients.view.toGradientDrawable
+import java.util.*
 
 /**
  * Binds data from [gradient] to the layout [FragmentDetailsBinding].
  *
- * Note: the logic for copying here maybe ought to be in the ViewModel
+ * Note: the logic for copy paste maybe ought to be in the ViewModel
  */
 fun FragmentDetailsBinding.bind(gradient: Gradient) {
     val clipboard: ClipboardManager =
@@ -52,7 +53,11 @@ fun FragmentDetailsBinding.bind(gradient: Gradient) {
         button.root.setOnClickListener {
             val clip: ClipData = ClipData.newPlainText("color", color)
             clipboard.setPrimaryClip(clip)
-            Toast.makeText(root.context, "Copied color: $color", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                root.context,
+                "Copied color: ${color.toUpperCase(Locale.getDefault())}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
         button.root.setBackgroundColor(color.toColorInt())
         colorButtonContainer.addView(button.root)

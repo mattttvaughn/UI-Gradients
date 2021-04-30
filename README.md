@@ -7,9 +7,9 @@ user to view/copy colors to the clipboard.
 ### Tech stack
  - Dagger2
  - Retrofit + OkHttp + Moshi
- - Room (for request caching)
+ - Room 
  - Kotlin + Coroutines
- - Jetpack ViewModel + Lifecycle
+ - Jetpack ViewModel + Lifecycle components
  - CoordinatorLayout
 
 ## Demos
